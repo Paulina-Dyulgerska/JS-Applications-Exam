@@ -1,25 +1,40 @@
 {{>header}}
 
 <!-- Register -->
-<div style="margin: 0 auto; margin-bottom:7%; margin-top:7%;" class="modal-content col-lg-6">
-    <div class="card-body">
-        <form method="POST" action="#/user/register">
-            <p class="h4 py-4">Register</p>
-            <hr>
-            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Your username</label>
-            <input name="username" type="text" id="defaultFormCardNameEx" class="form-control">
-            <br>
-            <label for="defaultFormCardPasswordEx" class="grey-text font-weight-light">Your password</label>
-            <input name="password" type="password" id="defaultFormCardPasswordEx" class="form-control">
-            <br>
-            <label for="defaultFormCardRePasswordEx" class="grey-text font-weight-light">Your re-password</label>
-            <input name="rePassword" type="password" id="defaultFormCardRePasswordEx" class="form-control">
-            <div class="text-center py-4 mt-3">
-                <button class="btn btn-info" type="submit">Register</button>
-            </div>
-        </form>
+<form action="#/user/register" method="POST">
+
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+      <p>Join our family and make a wish!</p>
     </div>
-</div>
+
+    <div class="form-label-group">
+      <input type="text" id="inputEmail" name="email" class="form-control" placeholder="Email" required="" autofocus="">
+      <label for="inputEmail">Username</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
+      <label for="inputPassword">Password</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="password" id="inputRePassword" name="rePassword" class="form-control" placeholder="Re-Password"
+        required="">
+      <label for="inputRePassword">Re-Password</label>
+    </div>
+
+    <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
+
+    <div class="text-center mb-4">
+      <p class="alreadyUser"> Already have account? Then just
+        <a href="#/user/login">Sign-In</a>!
+      </p>
+    </div>
+
+    <p class="mt-5 mb-3 text-muted text-center">© The Trekking Zone - 2019.</p>
+
+  </form>
 <!-- Register-->
 
 {{>footer}}

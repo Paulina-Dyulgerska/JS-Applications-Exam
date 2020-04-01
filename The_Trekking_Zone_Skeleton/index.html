@@ -12,49 +12,6 @@
 
 <body>
   <div id="main"></div>
-
-  <nav class="site-header sticky-top py-1">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
-          viewBox="0 0 70.617 70.617" focusable="false">
-          <title>The Trekking Zone</title>
-          <path style="fill:rgb(248, 212, 8);" d="M70.031,46.254L51.69,27.912c-0.78-0.781-2.047-0.781-2.828,0l-7.281,7.28L28.028,21.639
-		c-0.75-0.75-2.078-0.75-2.828,0L0.586,46.253c-0.572,0.572-0.743,1.433-0.434,2.18S1.191,49.667,2,49.667l29.936-0.003
-		c0.531,0,1.039-0.211,1.414-0.586l8.231-8.229l8.232,8.232c0.375,0.375,0.884,0.586,1.414,0.586l17.39,0.001
-		c0.809,0,1.538-0.487,1.848-1.234S70.604,46.826,70.031,46.254z" />
-        </svg>
-      </a>
-
-      <a class="py-2 d-none d-md-inline-block" href="#">Request Trek</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Hello, username</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Logout</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Login</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Register</a>
-    </div>
-  </nav>
-
-  <div id="notifications">
-    <div id="successBox" class="alert alert-success" role="alert">{Success Message...}</div>
-    <div id="loadingBox" class="alert alert-info" role="alert">Loading...</div>
-    <div id="errorBox" class="alert alert-danger" role="alert">{Error Message...}</div>
-  </div>
-
-  <div class="home d-md-flex flex-md-equal  my-md-3 pl-md-3">
-    <div style=" padding-left: 7%; padding-top:3%;" class="col-md-7">
-      <h2 class="featurette-heading">Here you will find the treks you've <span class="text-highlighted">always dreamed
-          about!</span></h2>
-      <p class="lead">1. Join our family.</p>
-      <p style="padding-left:5%" class="lead">2. Request the trek you've always wanted.</p>
-      <p style="padding-left:10%" class="lead">3. Find people who like your idea.</p>
-      <p class="lead">If you find enough supporters, we will organize everything for you!</p>
-    </div>
-    <div class="col-md-5">
-      <img class="home-picture" src="./images/mountainLogo.png" />
-    </div>
-  </div>
-
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -234,93 +191,11 @@
     </a>
   </div>
 
-  <form action="#" method="post">
+  
 
-    <div class="text-center mb-4">
-      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-    </div>
+  
 
-    <div class="form-label-group">
-      <input type="text" id="inputEmail" name="email" class="form-control" placeholder="Email" required="" autofocus="">
-      <label for="inputEmail">Username</label>
-    </div>
 
-    <div class="form-label-group">
-      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
-      <label for="inputPassword">Password</label>
-    </div>
-
-    <button class="btn btn-lg btn-dark btn-block" type="submit">Sign In</button>
-
-    <div class="text-center mb-4">
-      <p class="alreadyUser"> Don't have account? Then just
-        <a href="#">Sign-Up</a>!
-      </p>
-    </div>
-
-    <p class="mt-5 mb-3 text-muted text-center">© The Trekking Zone - 2019.</p>
-
-  </form>
-
-  <form action="#" method="post">
-
-    <div class="text-center mb-4">
-      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-      <p>Join our family and make a wish!</p>
-    </div>
-
-    <div class="form-label-group">
-      <input type="text" id="inputEmail" name="email" class="form-control" placeholder="Email" required="" autofocus="">
-      <label for="inputEmail">Username</label>
-    </div>
-
-    <div class="form-label-group">
-      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
-      <label for="inputPassword">Password</label>
-    </div>
-
-    <div class="form-label-group">
-      <input type="password" id="inputRePassword" name="rePassword" class="form-control" placeholder="Re-Password"
-        required="">
-      <label for="inputRePassword">Re-Password</label>
-    </div>
-
-    <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
-
-    <div class="text-center mb-4">
-      <p class="alreadyUser"> Already have account? Then just
-        <a href="#">Sign-In</a>!
-      </p>
-    </div>
-
-    <p class="mt-5 mb-3 text-muted text-center">© The Trekking Zone - 2019.</p>
-
-  </form>
-
-  <div class="profile col-md-6 text-center col-lg">
-    <img class="profile-img" src="./images/user.png" />
-    <div class="profile-info">
-      <p>Username: <small>username</small></p>
-      <p class="infoType">Wished 0 treks =)</p>
-      <p>Everest Base Camp</p>
-      <p>Langtang and Gosainkund</p>
-      <p>No treks</p>
-    </div>
-  </div>
-
-  <footer class="container py-5 page-footer">
-    <div class="row text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" fill="rgba(255, 255, 255, 0.513)"
-        stroke="currentColor" stroke-linecap="rectangle" stroke-linejoin="rectangle" stroke-width="2"
-        class="d-block mb-2" role="img" viewBox="0 0 70.617 70.617" focusable="false">
-        <path d="M70.031,46.254L51.69,27.912c-0.78-0.781-2.047-0.781-2.828,0l-7.281,7.28L28.028,21.639
-        c-0.75-0.75-2.078-0.75-2.828,0L0.586,46.253c-0.572,0.572-0.743,1.433-0.434,2.18S1.191,49.667,2,49.667l29.936-0.003
-        c0.531,0,1.039-0.211,1.414-0.586l8.231-8.229l8.232,8.232c0.375,0.375,0.884,0.586,1.414,0.586l17.39,0.001
-        c0.809,0,1.538-0.487,1.848-1.234S70.604,46.826,70.031,46.254z" />
-      </svg>
-      <p class="footer d-block mb-3">© The Trekking Zone - 2019. We can make your dreams come true!</p>
-    </div>
-  </footer>
 </body>
 
 <!-- Node Modules -->
@@ -338,7 +213,7 @@
 <script src="./config/firebase.js"></script>
 
 <!-- APP -->
-<script type="module" src="./scripts/app.js"></script>
+<!-- <script type="module" src="./scripts/app.js"></script> -->
 <!-- ./APP -->
 
 </html>

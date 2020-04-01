@@ -1,20 +1,17 @@
 {{>header}}
 
 <!-- Home page -->
-<div style="margin-top:3%; padding-top: 3%;" class="container">
-    <div class="row align-items-center my-5">
-        <div class="col-lg-12">
-            <img style="margin: 0 auto; display:block;" class="img-fluid rounded mb-4 mb-lg-0"
-                src="https://www.firstmid.com/wp-content/uploads/OpenforBusiness_SBALoan-900x400.png" alt="">
-        </div>
-        <div style="text-align:center;margin-top:5%;" class="col-lg-12">
-            <h1 class="font-weight-light">Does your business need support?</h1>
-            {{#if isLoggedIn}}
-            <a class="btn btn-primary" href="#/cause/create">Create your cause and seek for donors</a>
-            {{else}}
-            <a class="btn btn-primary" href="#/user/register">Register</a>
-            {{/if}}
-        </div>
+<div class="home d-md-flex flex-md-equal  my-md-3 pl-md-3">
+    <div style=" padding-left: 7%; padding-top:3%;" class="col-md-7">
+        <h2 class="featurette-heading">Here you will find the treks you've <span class="text-highlighted">always dreamed
+                about!</span></h2>
+        <p class="lead">1. Join our family.</p>
+        <p style="padding-left:5%" class="lead">2. Request the trek you've always wanted.</p>
+        <p style="padding-left:10%" class="lead">3. Find people who like your idea.</p>
+        <p class="lead">If you find enough supporters, we will organize everything for you!</p>
+    </div>
+    <div class="col-md-5">
+        <img class="home-picture" src="./images/mountainLogo.png" />
     </div>
 </div>
 <!-- ./Home page -->

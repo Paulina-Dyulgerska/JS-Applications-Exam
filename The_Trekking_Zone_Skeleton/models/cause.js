@@ -1,4 +1,4 @@
-const dbCollection = firebase.firestore().collection('causes');
+const dbCollection = firebase.firestore().collection('treks');
 
 export default {
     create: function (data) {
