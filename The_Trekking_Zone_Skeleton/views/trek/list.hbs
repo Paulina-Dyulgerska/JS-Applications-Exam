@@ -5,12 +5,11 @@
 <div id="treks-list">
 
   {{#each treks}}
-  <a href="#" class="card overflow-hidden treksPlaceholder trek-details" style="width: 20rem; height: 18rem;">
+  <a href="#/trek/details/{{id}}" class="card overflow-hidden treksPlaceholder trek-details" style="width: 20rem; height: 18rem;">
     <div class="card-body">
-      <p class="card-text">Everest Base Camp</p>
+      <p class="card-text">{{ location}}</p>
     </div>
-    <img class="card-image" src="https://s3.us-east-1.wasabisys.com/mts-wp-uploads/trips/trip_hero8_kha_2880x1260.jpg"
-      alt="Card image cap">
+    <img class="card-image" src={{ imageURL }} alt="Card image cap">
   </a>
   {{else}}
   <div class="container">

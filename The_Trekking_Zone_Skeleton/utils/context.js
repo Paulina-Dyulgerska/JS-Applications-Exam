@@ -8,19 +8,19 @@ export default function (context) {
             // console.log(user);
             context.isLoggedIn = true;
             context.userId = user.uid;
-            context.username = user.email;
+            context.email = user.email;
 
             localStorage.setItem('userId', user.uid); //zakacham userId za localStorage
-            localStorage.setItem('userEmail', user.email); //zakacham userEmail za localStorage
+            localStorage.setItem('email', user.email); //zakacham userEmail za localStorage
         } else {
             // User is signed out.
             // console.log("not logged in")
             context.isLoggedIn = false;
             context.userId = null;
-            context.username = null;
+            context.email = null;
 
             localStorage.removeItem('userId'); //triq userId za localStorage
-            localStorage.removeItem('userEmail'); //triq userEmail za localStorage
+            localStorage.removeItem('email'); //triq userEmail za localStorage
         }
     });
 

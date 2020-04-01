@@ -32,14 +32,14 @@ const app = Sammy('#main', function () {
     this.get('#/user/logout', controllers.user.get.logout);
 
     //trek
-    this.get('#/trek/dashboard', controllers.trek.get.dashboard);
+    this.get('#/trek/list', controllers.trek.get.list);
     this.get('#/trek/create', controllers.trek.get.create);
     this.get('#/trek/details/:trekId', controllers.trek.get.details);
 
     this.post('#/trek/create', controllers.trek.post.create);
 
-    // this.post('#/trek/donate/:trekId', controllers.trek.put.donate);
-    this.put('#/trek/donate/:trekId', controllers.trek.put.donate);
+    this.put('#/trek/edit/:trekId', controllers.trek.put.edit);
+    this.put('#/trek/like/:trekId', controllers.trek.put.like);
     this.get('#/trek/close/:trekId', controllers.trek.del.close);
 
     console.log(this);

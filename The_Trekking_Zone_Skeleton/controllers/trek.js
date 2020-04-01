@@ -4,14 +4,14 @@ import docModifier from '../utils/doc-modifier.js';
 
 export default {
     get: {
-        dashboard: function (context) {
+        list: function (context) {
             models.trek.getAll()
                 .then(r => {
                     const treks = r.docs.map(c => docModifier(c));
                     context.treks = treks;
                     console.log(treks);
                     extend(context).then(function () {
-                        this.partial('../views/trek/dashboard.hbs')
+                        this.partial('../views/trek/list.hbs')
                     })
                 })
                 .catch(e => console.error(e));
@@ -25,13 +25,15 @@ export default {
         details: function (context) {
             // console.log(context.params); //Sammy.Object {trekId: "Amvwq0VZ4kqzwCebfROf"}
             const { trekId } = context.params;
+            console.log('Hi from trek/get/details');
+            // console.log(context.params);
 
             models.trek.get(trekId)
                 .then(c => {
                     context.trek = docModifier(c);
 
                     console.log(context.trek);
-                    console.log(localStorage.getItem('userId'));
+                    // console.log(localStorage.getItem('userId'));
                     context.canDonate = context.trek.uId !== localStorage.getItem('userId');
 
                     extend(context).then(function () {
@@ -57,19 +59,37 @@ export default {
             const data = {
                 ...context.params,
                 uId: localStorage.getItem('userId'),
-                collectedFunds: 0,
-                donors: []
+                email: localStorage.getItem('email'),
             }
 
             models.trek.create(data)
                 .then(r => {
                     console.log(r);
-                    context.redirect('#/trek/dashboard');
+                    context.redirect('#/trek/list');
                 })
         }
     },
     put: {
-        donate: function (context) {
+        edit: function (context) {
+            console.log(context.params);
+            const { trekId } = context.params;
+
+            models.trek.get(trekId)
+                .then(r => {
+                    console.log(r);
+                    const trek = docModifier(r);
+                    if (trek.email ===localStorage.getItem('email')) {
+                        return false;
+                    }
+                    trek.likes++;
+                    console.log(trek);
+                    return models.trek.edit(trekId, trek);
+                })
+                .then(r => {
+                    context.redirect(`#/trek/details/${trekId}`)
+                })
+        },
+        like: function (context) {
             console.log(context.params);
             const { trekId, currentDonation } = context.params;
 
@@ -77,18 +97,17 @@ export default {
                 .then(r => {
                     console.log(r);
                     const trek = docModifier(r);
-                    trek.collectedFunds += Number(currentDonation);
-                    const donorEmail = localStorage.getItem('userEmail');
-                    if (!trek.donors.some(x => x === donorEmail)) {
-                        trek.donors.push(donorEmail)
+                    if (trek.email ===localStorage.getItem('email')) {
+                        return false;
                     }
+                    trek.likes++;
                     console.log(trek);
-                    return models.trek.donate(trekId, trek);
+                    return models.trek.edit(trekId, trek);
                 })
                 .then(r => {
                     context.redirect(`#/trek/details/${trekId}`)
                 })
-        }
+        },
     },
     del: {
         close: function (context) {
@@ -98,7 +117,7 @@ export default {
 
             models.trek.close(trekId)
                 .then((r) => {
-                    context.redirect('#/trek/dashboard');
+                    context.redirect('#/trek/list');
                 });
         }
     },

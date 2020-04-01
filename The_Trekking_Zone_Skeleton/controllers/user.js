@@ -26,28 +26,34 @@ export default {
                 context.redirect('#/home');
             })
         },
+        profile: function(context){
+            console.log("Hi from get/user/profile");
+
+        }
     },
     post: {
         login: function (context) {
             console.log("Hi from post/user/login");
-            const { username, password } = context.params;
+            const { email, password } = context.params;
 
-            models.user.login(username, password)
+            models.user.login(email, password)
                 .then((r) => {
                     console.log(context);
                     context.user = r;
-                    context.username = r.email;
+                    context.email = r.email;
                     context.isLoggedIn = true;
-                    context.redirect('#/home');
+                    context.redirect('#/trek/list');
                 })
                 .catch((e) => console.error(e))
         },
         register: function (context) {
             console.log("Hi from post/user/register")
-            const { username, password, rePassword } = context.params;
+            const { email, password, rePassword } = context.params;
+            console.log(context.params);
+            console.log(email);
 
             if (password === rePassword) {
-                models.user.register(username, password)
+                models.user.register(email, password)
                     .then((r) => {
                         console.log(r);
                         context.redirect('#/home');

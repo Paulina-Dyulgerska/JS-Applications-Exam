@@ -1,9 +1,9 @@
 export default {
-    register: function (username, password) {
-        return firebase.auth().createUserWithEmailAndPassword(username, password);
+    register: function (email, password) {
+        return firebase.auth().createUserWithEmailAndPassword(email, password);
     },
-    login: function (username, password) {
-        return firebase.auth().signInWithEmailAndPassword(username, password);
+    login: function (email, password) {
+        return firebase.auth().signInWithEmailAndPassword(email, password);
     },
     logout: function(){
         return firebase.auth().signOut();
