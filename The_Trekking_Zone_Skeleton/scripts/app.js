@@ -31,16 +31,16 @@ const app = Sammy('#main', function () {
     this.post('#/user/register', controllers.user.post.register);
     this.get('#/user/logout', controllers.user.get.logout);
 
-    //Cause
-    this.get('#/cause/dashboard', controllers.cause.get.dashboard);
-    this.get('#/cause/create', controllers.cause.get.create);
-    this.get('#/cause/details/:causeId', controllers.cause.get.details);
+    //trek
+    this.get('#/trek/dashboard', controllers.trek.get.dashboard);
+    this.get('#/trek/create', controllers.trek.get.create);
+    this.get('#/trek/details/:trekId', controllers.trek.get.details);
 
-    this.post('#/cause/create', controllers.cause.post.create);
+    this.post('#/trek/create', controllers.trek.post.create);
 
-    // this.post('#/cause/donate/:causeId', controllers.cause.put.donate);
-    this.put('#/cause/donate/:causeId', controllers.cause.put.donate);
-    this.get('#/cause/close/:causeId', controllers.cause.del.close);
+    // this.post('#/trek/donate/:trekId', controllers.trek.put.donate);
+    this.put('#/trek/donate/:trekId', controllers.trek.put.donate);
+    this.get('#/trek/close/:trekId', controllers.trek.del.close);
 
     console.log(this);
 });

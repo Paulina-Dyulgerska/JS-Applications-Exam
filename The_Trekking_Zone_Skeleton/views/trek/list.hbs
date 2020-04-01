@@ -1,0 +1,49 @@
+{{>header}}
+
+<!-- Treks-list (All Treks View) -->
+
+<div id="treks-list">
+
+  {{#each treks}}
+  <a href="#" class="card overflow-hidden treksPlaceholder trek-details" style="width: 20rem; height: 18rem;">
+    <div class="card-body">
+      <p class="card-text">Everest Base Camp</p>
+    </div>
+    <img class="card-image" src="https://s3.us-east-1.wasabisys.com/mts-wp-uploads/trips/trip_hero8_kha_2880x1260.jpg"
+      alt="Card image cap">
+  </a>
+  {{else}}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="fouronefour">
+          <img class="no-found-picture" src="./images/empty.jpg" />
+        </div>
+        <div class="no-found-template">
+          <h1>
+            There aren't any treks, yet!</h1>
+          <h2>
+            What do you have in mind?</h2>
+          <div class="no-found-details">
+            Be the first explorer!
+          </div>
+          <div class="actions">
+            <a href="#/trek/create" class="btn btn-dark btn-lg">Create the first trek? </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+<!-- /Treks-list (All Treks View) -->
+
+{{>footer}}
+
+
+{{!-- {{#each causes}}
+src={{ pictureUrl }} alt="">
+<h3 class="card-title">{{ cause }}</h3>
+<p class="card-text">{{ description }}</p>
+<a href="#/cause/details/{{ id }}" class="btn btn-success">Become a donor $$$</a> --}}

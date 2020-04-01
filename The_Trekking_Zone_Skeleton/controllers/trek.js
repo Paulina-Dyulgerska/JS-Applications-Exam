@@ -5,13 +5,13 @@ import docModifier from '../utils/doc-modifier.js';
 export default {
     get: {
         dashboard: function (context) {
-            models.cause.getAll()
+            models.trek.getAll()
                 .then(r => {
-                    const causes = r.docs.map(c => docModifier(c));
-                    context.causes = causes;
-                    console.log(causes);
+                    const treks = r.docs.map(c => docModifier(c));
+                    context.treks = treks;
+                    console.log(treks);
                     extend(context).then(function () {
-                        this.partial('../views/cause/dashboard.hbs')
+                        this.partial('../views/trek/dashboard.hbs')
                     })
                 })
                 .catch(e => console.error(e));
@@ -19,23 +19,23 @@ export default {
         create: function (context) {
             extend(context)
                 .then(function () {
-                    this.partial('../views/cause/create.hbs')
+                    this.partial('../views/trek/create.hbs')
                 })
         },
         details: function (context) {
-            // console.log(context.params); //Sammy.Object {causeId: "Amvwq0VZ4kqzwCebfROf"}
-            const { causeId } = context.params;
+            // console.log(context.params); //Sammy.Object {trekId: "Amvwq0VZ4kqzwCebfROf"}
+            const { trekId } = context.params;
 
-            models.cause.get(causeId)
+            models.trek.get(trekId)
                 .then(c => {
-                    context.cause = docModifier(c);
+                    context.trek = docModifier(c);
 
-                    console.log(context.cause);
+                    console.log(context.trek);
                     console.log(localStorage.getItem('userId'));
-                    context.canDonate = context.cause.uId !== localStorage.getItem('userId');
+                    context.canDonate = context.trek.uId !== localStorage.getItem('userId');
 
                     extend(context).then(function () {
-                        this.partial('../views/cause/details.hbs');
+                        this.partial('../views/trek/details.hbs');
                     })
                 })
                 .catch(e => console.error(e));
@@ -44,7 +44,7 @@ export default {
     post: {
         create: function (context) {
             // console.log(context.params);
-            //Sammy.Object {cause: "1", pictureUrl: "2", neededFunds: "3", description: "4"}
+            //Sammy.Object {trek: "1", pictureUrl: "2", neededFunds: "3", description: "4"}
             console.log(context.params); //context.params ne e obiknoven obekt, a e Sammy obekt
             console.log({ ...context.params }); //context.params ne e obiknoven obekt, a e Sammy obekt
 
@@ -61,44 +61,44 @@ export default {
                 donors: []
             }
 
-            models.cause.create(data)
+            models.trek.create(data)
                 .then(r => {
                     console.log(r);
-                    context.redirect('#/cause/dashboard');
+                    context.redirect('#/trek/dashboard');
                 })
         }
     },
     put: {
         donate: function (context) {
             console.log(context.params);
-            const { causeId, currentDonation } = context.params;
+            const { trekId, currentDonation } = context.params;
 
-            models.cause.get(causeId)
+            models.trek.get(trekId)
                 .then(r => {
                     console.log(r);
-                    const cause = docModifier(r);
-                    cause.collectedFunds += Number(currentDonation);
+                    const trek = docModifier(r);
+                    trek.collectedFunds += Number(currentDonation);
                     const donorEmail = localStorage.getItem('userEmail');
-                    if (!cause.donors.some(x => x === donorEmail)) {
-                        cause.donors.push(donorEmail)
+                    if (!trek.donors.some(x => x === donorEmail)) {
+                        trek.donors.push(donorEmail)
                     }
-                    console.log(cause);
-                    return models.cause.donate(causeId, cause);
+                    console.log(trek);
+                    return models.trek.donate(trekId, trek);
                 })
                 .then(r => {
-                    context.redirect(`#/cause/details/${causeId}`)
+                    context.redirect(`#/trek/details/${trekId}`)
                 })
         }
     },
     del: {
         close: function (context) {
-            const { causeId } = context.params;
-            console.log(causeId);
+            const { trekId } = context.params;
+            console.log(trekId);
 
 
-            models.cause.close(causeId)
+            models.trek.close(trekId)
                 .then((r) => {
-                    context.redirect('#/cause/dashboard');
+                    context.redirect('#/trek/dashboard');
                 });
         }
     },
