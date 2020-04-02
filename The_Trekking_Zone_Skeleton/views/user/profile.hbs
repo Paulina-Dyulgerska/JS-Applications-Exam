@@ -1,18 +1,21 @@
-{{ >header}}
+{{>header}}
  
   <!-- Profile -->
 
   <div class="profile col-md-6 text-center col-lg">
     <img class="profile-img" src="./images/user.png" />
     <div class="profile-info">
-      <p>Username: <small>username</small></p>
-      <p class="infoType">Wished 0 treks =)</p>
-      <p>Everest Base Camp</p>
-      <p>Langtang and Gosainkund</p>
+      <p>Username: <small>{{email}}</small></p>
+      <p class="infoType">Wished {{ userTreksCount}} treks =)</p>
+
+      {{#each userTreks}}
+      <p>{{this}}</p>
+      {{else}}
       <p>No treks</p>
+      {{/each}}
     </div>
   </div>
 
   <!-- Profile -->
+{{>footer}}
 
-{{ > footer }}

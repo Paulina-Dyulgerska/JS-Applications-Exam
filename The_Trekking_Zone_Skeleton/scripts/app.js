@@ -26,6 +26,8 @@ const app = Sammy('#main', function () {
     //User
     this.get('#/user/login', controllers.user.get.login);
     this.get('#/user/register', controllers.user.get.register);
+    this.get('#/user/profile', controllers.user.get.profile);
+
 
     this.post('#/user/login', controllers.user.post.login);
     this.post('#/user/register', controllers.user.post.register);
@@ -38,9 +40,13 @@ const app = Sammy('#main', function () {
 
     this.post('#/trek/create', controllers.trek.post.create);
 
-    this.put('#/trek/edit/:trekId', controllers.trek.put.edit);
-    this.put('#/trek/like/:trekId', controllers.trek.put.like);
+    this.get('#/trek/edit/:trekId', controllers.trek.get.edit);
+    this.post('#/trek/edit/:trekId', controllers.trek.post.edit);
+
+    this.get('#/trek/like/:trekId', controllers.trek.put.like);
+
     this.get('#/trek/close/:trekId', controllers.trek.del.close);
+
 
     console.log(this);
 });
@@ -51,7 +57,7 @@ const app = Sammy('#main', function () {
 // })()
 
 app.run('#/home'); //shte startiram routera na home!!! Sammy-to syzdava negov this, kojto az posle
-//si podavam kato context po-natatyk v logikata! 
+//si podavam kato context po-natatyk v logikata!
 //This-a, kojto mi vryshta Sammy, mi stava context v context.js
 //tozi this, kojto generira Sammy-to e vse edno dyrjaven obekt, kojto Sammy-to mi dava i az posle moga
 //da go manipuliram i da mu dobavqm propertyta, kato mi trqbwat.
@@ -64,7 +70,7 @@ app.run('#/home'); //shte startiram routera na home!!! Sammy-to syzdava negov th
 // get('#/by_name/:name', function() {
 //         this.redirect('#', this.params['name']);
 //       });
-      
+
 // get('#/by_name/:name', function(context) {
 //         context.redirect('#', this.params['name']);
 //       });

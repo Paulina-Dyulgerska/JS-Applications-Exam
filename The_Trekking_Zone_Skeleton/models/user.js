@@ -5,7 +5,7 @@ export default {
     login: function (email, password) {
         return firebase.auth().signInWithEmailAndPassword(email, password);
     },
-    logout: function(){
+    logout: function () {
         return firebase.auth().signOut();
     },
 };

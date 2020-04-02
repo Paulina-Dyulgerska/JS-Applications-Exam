@@ -10,7 +10,7 @@ export default {
     get: function(id) {
         return dbCollection.doc(id).get();
     },
-    donate: function(id, data) {
+    edit: function(id, data) {
         return dbCollection.doc(id).update(data);
     },
     close: function(id){

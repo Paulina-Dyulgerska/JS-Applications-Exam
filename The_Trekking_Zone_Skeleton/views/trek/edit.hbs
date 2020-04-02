@@ -2,25 +2,28 @@
 
 <!-- Edit Trek -->
 
-<form class="create-trek" action="#/trek/edit" method="POST">
+<form class="create-trek" action="#/trek/edit/{{trek.id}}" method="POST">
 
     <div class="form-label-group">
-      <input type="text" name="location" class="form-control" placeholder="Location" required="" autofocus="" value="">
+      <input type="text" name="location" class="form-control" placeholder="Location" required="" autofocus="" 
+      value="{{trek.location}}">
       <label for="inputTrekName">Location</label>
     </div>
 
     <div class="form-label-group">
-      <input type="text" value="" name="dateTime" class="form-control" placeholder="Date" required="">
+      <input type="text" value="{{trek.dateTime}}" name="dateTime" class="form-control" placeholder="Date" required="">
       <label for="inputTrekDate">Date</label>
     </div>
 
     <div class="form-label-group">
-      <textarea type="text" name="description" class="form-control" placeholder="Description" required=""></textarea>
+      <textarea type="text" name="description" class="form-control" placeholder="Description" required="">
+        {{trek.description}}
+      </textarea>
       <label for="inputTrekDescription">Description</label>
     </div>
 
     <div class="form-label-group">
-      <input type="text" value="" name="imageURL" class="form-control" placeholder="Image" required="" autofocus="">
+      <input type="text" value="{{trek.imageURL}}" name="imageURL" class="form-control" placeholder="Image" required="" autofocus="">
       <label for="inputTrekImage">Image</label>
     </div>
     <div style="display: none">

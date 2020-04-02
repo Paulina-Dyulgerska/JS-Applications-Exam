@@ -11,12 +11,14 @@
       <p class="trek-description">{{ trek.description }}</p>
       <p class="infoType">Date: <large>{{trek.dateTime}}</large>
       </p>
-      <p class="infoType">Likes: <large>0</large>
+      <p class="infoType">Likes: <large>{{trek.likes}}</large>
       </p>
       <p class="infoType">Organizer: <large>{{trek.email}}</large>
       </p>
     </div>
     <div class="buttons-together">
+
+      {{#if canEditTrek}}
       <a class="a-button" href="#/trek/edit/{{trek.id}}">
         <svg version="1.1" id="edit-button" width="30px" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 293.129 293.129"
@@ -55,6 +57,9 @@
         </svg>
         Close the trek
       </a>
+
+      {{/if}}
+
       <a class="a-button" href="#/trek/like/{{trek.id}}">
         <svg version="1.1" width="30px" id="like-button" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50"
