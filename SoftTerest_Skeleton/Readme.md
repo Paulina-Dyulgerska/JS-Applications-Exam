@@ -6,4 +6,4 @@ This app is depending on the following node modules:
 Just type in terminal "npm install" to install them quickly.
 
 This application is using a firebase cloud firestore database. 
-Configurations are located in: config/firebase.js file.
+Configurations are located in file: config/firebase.js.
