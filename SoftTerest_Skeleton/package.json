@@ -1,0 +1,17 @@
+{
+  "name": "softterest_skeleton",
+  "version": "1.0.0",
+  "description": "Before you use this app, please run \"npm install\", because this app is depending on node modules:\r     - bootstrap,\r     - handlebars,\r     - jquery,\r     - popper,\r     - sammy.\r Just type in terminal \"npm install\".",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paulina Dyulgerska",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "handlebars": "^4.7.4",
+    "jquery": "^3.4.1",
+    "sammy": "^0.7.6"
+  }
+}
