@@ -14,8 +14,8 @@ export default {
             })
         },
         register: function (context) {
-
             console.log("Hi from get/user/register")
+
             extend(context).then(function () {
                 this.partial("../views/user/register.hbs")
             })
@@ -28,11 +28,8 @@ export default {
             models.user.logout()
                 .then(r => {
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Logout successful.', 3000)
-                    return r;
-                })
-                .then(r => {
-                    context.redirect('#/home');
+                    notificator.showStatus('success', 'Logout successful.', 1000)
+                    setTimeout(() => context.redirect('#/home'), 1000);
                 })
                 .catch(e => errorHandler(e, notificator));
         },
@@ -42,9 +39,9 @@ export default {
             models.item.getAll()
                 .then(r => {
                     const items = r.docs.map(c => docModifier(c));
-                    context.useritems = [...items.filter(x => x.email === localStorage.getItem('email'))
-                        .map(x => x.title)];
                     context.email = localStorage.getItem('email');
+                    context.useritems = [...items.filter(x => x.email === context.email)
+                        .map(x => x.title)];
                     context.useritemsCount = context.useritems.length;
                     extend(context).then(function () {
                         this.partial("../views/user/profile.hbs")
@@ -62,16 +59,13 @@ export default {
             notificator.toggleLoading(true);
 
             models.user.login(email, password)
-                .then((r) => {
-                    notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Login successful.', 2000)
-                    return r;
-                })
                 .then(r => {
                     context.user = r;
                     context.email = r.email;
                     context.isLoggedIn = true;
-                    context.redirect('#/item/list');
+                    notificator.toggleLoading(false);
+                    notificator.showStatus('success', 'Login successful.', 2000)
+                    setTimeout(() => context.redirect('#/item/list'), 2000);
                 })
                 .catch(e => errorHandler(e, notificator));
 
@@ -83,14 +77,13 @@ export default {
             const { email, password, rePassword } = context.params;
 
             notificator.toggleLoading(true);
+
             if (password === rePassword) {
                 models.user.register(email, password)
                     .then(r => {
                         notificator.toggleLoading(false);
                         notificator.showStatus('success', 'User registration successful.', 2000)
-                    })
-                    .then(r => {
-                        context.redirect('#/item/list');
+                        setTimeout(() => context.redirect('#/item/list'), 2000);
                     })
                     .catch(e => errorHandler(e, notificator));
             } else {

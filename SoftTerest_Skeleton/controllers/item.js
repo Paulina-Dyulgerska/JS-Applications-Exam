@@ -14,13 +14,9 @@ export default {
             models.item.getAll()
                 .then(r => {
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Loaded successfully.', 2000)
-                    return r;
-                })
-                .then(r => {
+                    notificator.showStatus('success', 'Loaded successfully.', 2000);
                     const items = r.docs.map(c => docModifier(c));
                     context.items = items;
-
                     extend(context).then(function () {
                         this.partial('../views/item/list.hbs')
                     })
@@ -45,13 +41,9 @@ export default {
             models.item.get(itemId)
                 .then(r => {
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Loaded successfully.', 2000)
-                    return r;
-                })
-                .then(c => {
-                    context.item = docModifier(c);
+                    notificator.showStatus('success', 'Loaded successfully.', 2000);
+                    context.item = docModifier(r);
                     context.canEdititem = context.item.uId === localStorage.getItem('userId');
-
                     extend(context).then(function () {
                         this.partial('../views/item/details.hbs');
                     })
@@ -67,12 +59,9 @@ export default {
 
             models.item.get(itemId)
                 .then(r => {
+                    context.item = docModifier(r);
                     notificator.toggleLoading(false);
                     notificator.showStatus('success', 'Idea edited successfully.', 2000)
-                    return r;
-                })
-                .then(r => {
-                    context.item = docModifier(r);
                     extend(context).then(function () {
                         this.partial('../views/item/edit.hbs');
                     })
@@ -104,7 +93,7 @@ export default {
                 .then(r => {
                     notificator.toggleLoading(false);
                     notificator.showStatus('success', 'Idea created successfully.', 2000)
-                    context.redirect('#/item/list');
+                    setTimeout(() => context.redirect('#/item/list'), 2000);
                 })
                 .catch((e) => errorHandler(e, notificator));
             Array.from(document.querySelectorAll('form input')).forEach(i => i.value = '');
@@ -140,14 +129,13 @@ export default {
                         comments: item.comments,
                     }
                     notificator.toggleLoading(false);
-
+                    notificator.showStatus('success', 'Comment created successfully.', 2000)
                     return models.item.edit(itemId, data);
                 })
                 .then(r => {
                     context.redirect(`#/item/details/${itemId}`)
                 })
                 .catch(e => errorHandler(e, notificator));
-
         },
     },
     put: {
@@ -156,16 +144,10 @@ export default {
 
             const { itemId } = context.params;
 
-            notificator.toggleLoading(true);
-
             models.item.get(itemId)
-                .then((r) => {
-                    notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Like created successfully.', 3000);
-                    return r;
-                })
                 .then(r => {
                     const item = docModifier(r);
+                    console.log(item);
                     item.likes = item.likes + 1;
                     return models.item.edit(itemId, item);
                 })
