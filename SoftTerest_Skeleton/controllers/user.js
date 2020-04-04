@@ -9,16 +9,24 @@ export default {
         login: function (context) {
             console.log("Hi from get/user/login");
 
-            extend(context).then(function () {
-                this.partial("../views/user/login.hbs")
-            })
+            if (localStorage.getItem('email')) {
+                context.redirect('#/item/list');
+            } else {
+                extend(context).then(function () {
+                    this.partial("../views/user/login.hbs")
+                })
+            }
         },
         register: function (context) {
             console.log("Hi from get/user/register")
 
-            extend(context).then(function () {
-                this.partial("../views/user/register.hbs")
-            })
+            if (localStorage.getItem('email')) {
+                context.redirect('#/item/list');
+            } else {
+                extend(context).then(function () {
+                    this.partial("../views/user/register.hbs")
+                })
+            }
         },
         logout: function (context) {
             console.log("Hi from get/user/logout");
