@@ -87,6 +87,15 @@ export default {
                 comments: [],
             }
 
+            const hasValidData = data.title.length >= 6
+                && data.description.length >= 10
+                && (data.imageURL.startsWith('http://') || data.imageURL.startsWith('https://'));
+
+            if (!hasValidData) {
+                notificator.showStatus('error', 'Please fill the form correctly.', 1000)
+                return false;
+            }
+
             notificator.toggleLoading(true);
 
             models.item.create(data)
@@ -97,7 +106,7 @@ export default {
                 })
                 .catch((e) => errorHandler(e, notificator));
             Array.from(document.querySelectorAll('form input')).forEach(i => i.value = '');
-
+            // document.querySelectorAll('form input').reset();
         },
         edit: function (context) {
             console.log('Hi from item/post/edit');

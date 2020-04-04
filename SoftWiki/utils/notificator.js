@@ -1,5 +1,5 @@
 export default {
-    showStatus: function (type, message, seconds = '3000') {
+    showStatus: function (type, message, seconds = '1000') {
         const notEl = document.getElementById(`${type}Box`);
         notEl.textContent = message;
         notEl.style.display = 'block';
