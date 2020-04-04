@@ -106,7 +106,7 @@ export default {
                 })
                 .catch((e) => errorHandler(e, notificator));
             Array.from(document.querySelectorAll('form input')).forEach(i => i.value = '');
-
+            // document.querySelectorAll('form input').reset();
         },
         edit: function (context) {
             console.log('Hi from item/post/edit');
