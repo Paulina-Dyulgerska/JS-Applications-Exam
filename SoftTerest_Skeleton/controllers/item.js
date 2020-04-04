@@ -87,6 +87,15 @@ export default {
                 comments: [],
             }
 
+            const hasValidData = data.title.length >= 6
+                && data.description.length >= 10
+                && (data.imageURL.startsWith('http://') || data.imageURL.startsWith('https://'));
+
+            if (!hasValidData) {
+                notificator.showStatus('error', 'Please fill the form correctly.', 1000)
+                return false;
+            }
+
             notificator.toggleLoading(true);
 
             models.item.create(data)

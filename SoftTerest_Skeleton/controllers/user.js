@@ -45,7 +45,9 @@ export default {
 
             models.item.getAll()
                 .then(r => {
-                    const items = r.docs.map(c => docModifier(c));
+                    const items = r.docs.map(c => docModifier(c))
+                    items.sort((a,b)=> b.likes - a.likes);
+                    console.log(items);
                     context.email = localStorage.getItem('email');
                     context.useritems = [...items.filter(x => x.email === context.email)
                         .map(x => x.title)];
@@ -85,7 +87,7 @@ export default {
 
             notificator.toggleLoading(true);
 
-            if (password === rePassword) {
+            if (email.length >= 3 && password.length >= 3 && password === rePassword) {
                 models.user.register(email, password)
                     .then(r => {
                         notificator.toggleLoading(false);
@@ -94,7 +96,7 @@ export default {
                     })
                     .catch(e => errorHandler(e, notificator));
             } else {
-                errorHandler({ message: 'Passwords are different.' }, notificator)
+                errorHandler({ message: 'Cridentials are not valid ones. Please correct them.' }, notificator)
             }
 
             Array.from(document.querySelectorAll('form input')).forEach(i => i.value = '');
