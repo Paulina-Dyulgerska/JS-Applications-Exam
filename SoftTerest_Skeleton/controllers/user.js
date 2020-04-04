@@ -8,7 +8,6 @@ export default {
     get: {
         login: function (context) {
             console.log("Hi from get/user/login");
-
             if (localStorage.getItem('email')) {
                 context.redirect('#/item/list');
             } else {
@@ -72,8 +71,8 @@ export default {
                     context.email = r.email;
                     context.isLoggedIn = true;
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Login successful.', 2000)
-                    setTimeout(() => context.redirect('#/item/list'), 2000);
+                    notificator.showStatus('success', 'Login successful.', 1000)
+                    setTimeout(() => context.redirect('#/item/list'), 1000);
                 })
                 .catch(e => errorHandler(e, notificator));
 
@@ -90,8 +89,8 @@ export default {
                 models.user.register(email, password)
                     .then(r => {
                         notificator.toggleLoading(false);
-                        notificator.showStatus('success', 'User registration successful.', 2000)
-                        setTimeout(() => context.redirect('#/item/list'), 2000);
+                        notificator.showStatus('success', 'User registration successful.', 1000)
+                        setTimeout(() => context.redirect('#/item/list'), 1000);
                     })
                     .catch(e => errorHandler(e, notificator));
             } else {

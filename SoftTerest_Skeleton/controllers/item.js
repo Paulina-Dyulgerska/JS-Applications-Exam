@@ -14,7 +14,7 @@ export default {
             models.item.getAll()
                 .then(r => {
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Loaded successfully.', 2000);
+                    notificator.showStatus('success', 'Loaded successfully.', 1000);
                     const items = r.docs.map(c => docModifier(c));
                     context.items = items;
                     extend(context).then(function () {
@@ -41,7 +41,7 @@ export default {
             models.item.get(itemId)
                 .then(r => {
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Loaded successfully.', 2000);
+                    notificator.showStatus('success', 'Loaded successfully.', 1000);
                     context.item = docModifier(r);
                     context.canEdititem = context.item.uId === localStorage.getItem('userId');
                     extend(context).then(function () {
@@ -61,7 +61,7 @@ export default {
                 .then(r => {
                     context.item = docModifier(r);
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Idea edited successfully.', 2000)
+                    notificator.showStatus('success', 'Idea edited successfully.', 1000)
                     extend(context).then(function () {
                         this.partial('../views/item/edit.hbs');
                     })
@@ -92,8 +92,8 @@ export default {
             models.item.create(data)
                 .then(r => {
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Idea created successfully.', 2000)
-                    setTimeout(() => context.redirect('#/item/list'), 2000);
+                    notificator.showStatus('success', 'Idea created successfully.', 1000)
+                    setTimeout(() => context.redirect('#/item/list'), 1000);
                 })
                 .catch((e) => errorHandler(e, notificator));
             Array.from(document.querySelectorAll('form input')).forEach(i => i.value = '');
@@ -129,7 +129,7 @@ export default {
                         comments: item.comments,
                     }
                     notificator.toggleLoading(false);
-                    notificator.showStatus('success', 'Comment created successfully.', 2000)
+                    notificator.showStatus('success', 'Comment created successfully.', 1000)
                     return models.item.edit(itemId, data);
                 })
                 .then(r => {
