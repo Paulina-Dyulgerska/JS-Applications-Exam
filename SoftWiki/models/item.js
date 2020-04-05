@@ -1,5 +1,4 @@
-//!!! TODO change the name of the collection!!!
-const dbCollection = firebase.firestore().collection('ideas');
+const dbCollection = firebase.firestore().collection('articles');
 
 export default {
     create: function (data) {

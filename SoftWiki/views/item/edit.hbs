@@ -1,39 +1,32 @@
 {{>header}}
 
-<!-- Edit item -->
+<!-- Edit -->
+<div class="container">
 
-{{!-- <form class="create-item" action="#/item/edit/{{item.id}}" method="POST">
+  <form action="#/item/edit/{{item.id}}" method="POST">
+    <fieldset>
+      <legend>Edit article</legend>
+      <p class="field title">
+        <input type="text" name="title" id="title" placeholder="Arrays" value="{{item.title}}">
+        <label for="title">Title:</label>
+      </p>
 
-    <div class="form-label-group">
-      <input type="text" name="location" class="form-control" placeholder="Location" required="" autofocus="" 
-      value="{{item.location}}">
-      <label for="inputitemName">Location</label>
-    </div>
+      <p class="field category">
+        <input type="text" name="category" id="category" placeholder="JavaScript" value="{{item.category}}">
+        <label for="category">Category:</label>
+      </p>
+      <p class="field content">
+        <textarea name="content" id="content">{{item.content}}</textarea>
+        <label for="content">Content:</label>
+      </p>
 
-    <div class="form-label-group">
-      <input type="text" value="{{item.dateTime}}" name="dateTime" class="form-control" placeholder="Date" required="">
-      <label for="inputitemDate">Date</label>
-    </div>
+      <p class="field submit">
+        <button class="btn submit" type="submit">Edit</button>
+      </p>
 
-    <div class="form-label-group">
-      <textarea type="text" name="description" class="form-control" placeholder="Description" required="">
-        {{item.description}}
-      </textarea>
-      <label for="inputitemDescription">Description</label>
-    </div>
-
-    <div class="form-label-group">
-      <input type="text" value="{{item.imageURL}}" name="imageURL" class="form-control" placeholder="Image" required="" autofocus="">
-      <label for="inputitemImage">Image</label>
-    </div>
-    <div style="display: none">
-      <input name="organizer" value="" />
-      <input name="likes" value="" />
-    </div>
-
-    <button class="btn btn-lg btn-dark btn-block" type="submit">Edit the item</button>
-  </form> --}}
-
+    </fieldset>
+  </form>
+</div>
 <!-- /Edit item -->
 
 {{>footer}}

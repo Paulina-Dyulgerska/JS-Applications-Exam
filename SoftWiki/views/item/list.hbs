@@ -1,60 +1,64 @@
 {{>header}}
 
 <!-- items-list (All items View) -->
-
-<div id="dashboard-holder">
-
-  {{#each items}}
-  <div class="card overflow-hidden current-card details" style="width: 20rem; height: 18rem;">
-    <div class="card-body">
-      <p class="card-text">{{ title}}</p>
+<div class="content">
+  <section class="js">
+    <h2>JavaScript</h2>
+    {{#each itemsJS}}
+    <div class="articles">
+      <article>
+        <h3>{{title}}</h3>
+        <p>{{content}}</p>
+        <a href="#/item/details/{{id}}" class="btn details-btn">Details</a>
+      </article>
     </div>
-    <img class="card-image" src="{{ imageURL }}" alt="Card image cap">
-    <a class="btn" href="#/item/details/{{id}}">Details</a>
-  </div>
-
-  {{else}}
-  <h1>No ideas yet! Be the first one :)</h1>
-  {{/each}}
-
+    {{else}}
+    <h3 class="no-articles">No articles yet</h3>
+    {{/each}}
+  </section>
+  <section class="CSharp">
+    <h2>C#</h2>
+     {{#each itemsC}}
+    <div class="articles">
+      <article>
+        <h3>{{title}}</h3>
+        <p>{{content}}</p>
+        <a href="#/item/details/{{id}}" class="btn details-btn">Details</a>
+      </article>
+    </div>
+    {{else}}
+    <h3 class="no-articles">No articles yet</h3>
+    {{/each}}
+  </section>
+  <section class="Java">
+    <h2>Java</h2>
+     {{#each itemsJava}}
+    <div class="articles">
+      <article>
+        <h3>{{title}}</h3>
+        <p>{{content}}</p>
+        <a href="#/item/details/{{id}}" class="btn details-btn">Details</a>
+      </article>
+    </div>
+    {{else}}
+    <h3 class="no-articles">No articles yet</h3>
+    {{/each}}
+  </section>
+  <section class="Pyton">
+    <h2>Pyton</h2>
+     {{#each itemsPyton}}
+    <div class="articles">
+      <article>
+        <h3>{{title}}</h3>
+        <p>{{content}}</p>
+        <a href="#/item/details/{{id}}" class="btn details-btn">Details</a>
+      </article>
+    </div>
+    {{else}}
+    <h3 class="no-articles">No articles yet</h3>
+    {{/each}}
+  </section>
 </div>
-
-
-{{!-- <div id="items-list">
-
-  {{#each items}}
-  <a href="#/item/details/{{id}}" class="card overflow-hidden itemsPlaceholder item-details"
-    style="width: 20rem; height: 18rem;">
-    <div class="card-body">
-      <p class="card-text">{{ location}}</p>
-    </div>
-    <img class="card-image" src={{ imageURL }} alt="Card image cap">
-  </a>
-  {{else}}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div id="fouronefour">
-          <img class="no-found-picture" src="./images/empty.jpg" />
-        </div>
-        <div class="no-found-template">
-          <h1>
-            There aren't any items, yet!</h1>
-          <h2>
-            What do you have in mind?</h2>
-          <div class="no-found-details">
-            Be the first explorer!
-          </div>
-          <div class="actions">
-            <a href="#/item/create" class="btn btn-dark btn-lg">Create the first item? </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{/each}}
-</div> --}}
-
 <!-- /items-list (All items View) -->
 
 {{>footer}}

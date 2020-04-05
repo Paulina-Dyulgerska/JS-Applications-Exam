@@ -1,5 +1,4 @@
 This app is depending on the following node modules:
-    - bootstrap,
     - handlebars,
     - jquery,
     - sammy.
